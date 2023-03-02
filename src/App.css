@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.title{
+  @apply text-2xl  font-bold text-white;
+}
+
+.display{
+  @apply flex flex-row items-start gap-10 ;
+}
+
+.user{ 
+  padding: 0 0.6rem; 
+  @apply flex flex-row items-center justify-between  bg-cyan-700 gap-3 rounded-2xl shadow-md;
+}
+.userData{
+  padding: 0.5rem 0;
+  cursor: pointer;
+  @apply flex flex-row justify-center text-center gap-2 items-center;
+}
+.userData:hover *{
+  @apply text-amber-500 ;
+}
+.avatar{ 
+  @apply rounded-full w-10 h-10;
+}
+.username{ 
+  @apply text-2xl font-bold  text-white text-ellipsis;
+}
+.followCount{
+  @apply text-sm font-bold text-amber-600;
+}
+
+.users{ 
+  border: 1px solid ;
+  max-height: 500px;
+  min-width:30rem;
+  @apply bg-slate-800   flex flex-col gap-1 border-slate-700 p-1 ;
+}
+
+.users > div{
+  @apply overflow-y-scroll max-h-fit flex flex-col gap-4 border-slate-700 p-10 ;
+}
+
+
+input{
+  @apply text-white text-lg font-bold bg-slate-700 rounded-2xl p-2 h-14 indent-3;
+}
+
+.error{
+  @apply text-red-500 text-lg  top-1;
+}
+
+.loading{
+  @apply text-white text-lg  top-1;
+}

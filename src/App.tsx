@@ -20,6 +20,10 @@ function App() {
       <User
         key={name}
         data={users[name]?.info}
+        onEdit={(newName) => {
+          deleteUser(name)
+          appendUser(newName)
+        }}
         // set to removable if there are more than 2 users
         removable={names.length > 2}
         onRemove={() => deleteUser(name)} />
@@ -28,7 +32,13 @@ function App() {
 
   // compute common followers elements
   const followersCompoenents = useMemo(() => {
-    return commonUsers.map(user => <User key={user.id.toString()} data={user} />)
+    return commonUsers.map(user => <User
+      key={user.id.toString()}
+      data={user}
+      onEdit={(newName) => {
+        deleteUser(user.login)
+        appendUser(newName)
+      }} />)
   }, [commonUsers])
 
 
@@ -36,9 +46,8 @@ function App() {
     <div >
       <h1>Samvel Avanesov - SRTX/Demo</h1>
       <h2> 2022 - Software Interview Code Demonstration - Front-End</h2>
-
       <h3>Built with: vite, react, tailwind, typescript</h3>
-
+      <p>Followers must follow all of the users</p>
       <div  >
         <div className={'display'}>
           {

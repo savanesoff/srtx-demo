@@ -19,7 +19,7 @@
 
 .user{ 
   padding: 0 0.6rem; 
-  @apply flex flex-row items-center justify-between  bg-cyan-700 gap-3 rounded-2xl shadow-md;
+  @apply  flex flex-row items-center justify-between  bg-cyan-700 gap-3 rounded-2xl shadow-md;
 }
 .userData{
   padding: 0.5rem 0;
@@ -28,6 +28,9 @@
 }
 .userData:hover *{
   @apply text-amber-500 ;
+}
+.controls{
+  @apply flex flex-row justify-center items-center gap-2;
 }
 .avatar{ 
   @apply rounded-full w-10 h-10;

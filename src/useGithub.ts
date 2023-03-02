@@ -78,7 +78,8 @@ export function useGithub() {
             }
         } = {};
 
-        Object.keys(users).forEach(name => {
+        const userNames = Object.keys(users);
+        userNames.forEach(name => {
             const followers = users[name]?.followers;
             if (!followers || followers.length === 0) {
                 return;
@@ -98,7 +99,7 @@ export function useGithub() {
             })
         })
 
-        const commonUsers = Object.values(userList).filter(user => user.count > 1).map(user => user.follower);
+        const commonUsers = Object.values(userList).filter(user => user.count === userNames.length).map(user => user.follower);
         setCommonUsers(commonUsers);
     }, [users, setCommonUsers])
 

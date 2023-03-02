@@ -5,7 +5,7 @@ interface User {
     data?: UserType;
     removable?: boolean;
     onRemove?: () => void;
-    onEdit: (name: string) => void;
+    onEdit?: (name: string) => void;
 }
 export function User({
     data,
@@ -16,7 +16,7 @@ export function User({
     const [editUser, setEditUser] = useState(false);
 
     const onKey = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.key !== 'Enter') return;
+        if (!onEdit || event.key !== 'Enter') return;
         setEditUser(false);
         onEdit(event.currentTarget.value);
     }
@@ -30,7 +30,7 @@ export function User({
 
     return (
         <>
-            {editUser && <input type="text"
+            {editUser && onEdit && <input type="text"
                 placeholder="Enter Username"
                 autoFocus={true}
                 onKeyDownCapture={onKey}
@@ -42,7 +42,7 @@ export function User({
                     {data?.followers && <span className={'followCount'}> {data.followers} fans</span>}
                 </a>
                 <div className="controls">
-                    {<button className={'remove'} onClick={() => setEditUser(true)}>Edit</button>}
+                    {onEdit && <button className={'remove'} onClick={() => setEditUser(true)}>Edit</button>}
                     {/* Enable delete */}
                     {removable && <button className={'remove'} onClick={onRemove}>x</button>}
                 </div>

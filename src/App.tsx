@@ -34,11 +34,7 @@ function App() {
   const followersCompoenents = useMemo(() => {
     return commonUsers.map(user => <User
       key={user.id.toString()}
-      data={user}
-      onEdit={(newName) => {
-        deleteUser(user.login)
-        appendUser(newName)
-      }} />)
+      data={user} />)
   }, [commonUsers])
 
 
@@ -48,6 +44,7 @@ function App() {
       <h2> 2022 - Software Interview Code Demonstration - Front-End</h2>
       <h3>Built with: vite, react, tailwind, typescript</h3>
       <p>Followers must follow all of the users</p>
+      <p>Ex: try changing users to: Sam, Dave</p>
       <div  >
         <div className={'display'}>
           {
